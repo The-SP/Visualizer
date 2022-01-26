@@ -1,0 +1,19 @@
+.sorting {
+    display: flex;
+    align-items: center;
+    height: 80vh;
+}
+
+.array-container {
+    display: flex;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.array-bar {
+    margin: 0.1rem;
+    width: 25px;
+    background: pink;
+    font-size: 0.5rem;
+}
