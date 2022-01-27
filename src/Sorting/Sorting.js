@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import "./Sorting.css";
-import bubbleSortAnimation from "../Algorithms/bubbleSort";
 import { getRandomSize, testSortingAlgorithms } from "../helpers";
-import Bars from "./components/Bars";
+import Bars from "./components/Bars";      
+import bubbleSortAnimation from "../Algorithms/bubbleSort"; 
 import insertionSortAnimation from "../Algorithms/insertionSort";
+import selectionSortAnimation from "../Algorithms/selectionSort";
 
 // constants
-const NUMBER_OF_ARRAY_BARS = 50; // 450 is limit otherwise nothing appears
-const ANIMATION_SPEED = 10;
+const NUMBER_OF_ARRAY_BARS = 20; // 450 is limit otherwise nothing appears
+const ANIMATION_SPEED = 100;
 const PRIMARY_COLOR = 'pink';
 const SECONDARY_COLOR = 'red';
 
@@ -45,6 +46,11 @@ const Sorting = () => {
       handleAnimation(results);
   }
 
+  function selectionSort() {
+    const results = selectionSortAnimation(array);
+    handleAnimation(results);
+}
+
   function handleAnimation(results) {
       for (let i=0; i<results.length; i++) {
           // check swapped or not then change array state
@@ -60,6 +66,9 @@ const Sorting = () => {
         <h1>Sorting Visualizer</h1>
         <button className="btn btn-success btn-sm" onClick={insertionSort}>
           Insertion sort
+        </button>
+        <button className="btn btn-success btn-sm" onClick={selectionSort}>
+          Selection sort
         </button>
         <button className="btn btn-success btn-sm" onClick={bubbleSort}>
           Bubble sort
