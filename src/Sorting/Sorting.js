@@ -5,6 +5,7 @@ import Bars from "./components/Bars";
 import bubbleSortAnimation from "../Algorithms/bubbleSort";
 import insertionSortAnimation from "../Algorithms/insertionSort";
 import selectionSortAnimation from "../Algorithms/selectionSort";
+import quickSortAnimation from "../Algorithms/quickSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
@@ -44,6 +45,11 @@ const Sorting = () => {
 
   function selectionSort() {
     const results = selectionSortAnimation(array);
+    handleAnimation(results);
+  }
+
+  function quickSort() {
+    const results = quickSortAnimation(array);
     handleAnimation(results);
   }
 
@@ -97,6 +103,9 @@ const Sorting = () => {
           <label htmlFor="floatingInput4">No of Bars</label>
         </div>
 
+        <button className="btn btn-success btn-sm" onClick={quickSort}>
+          Quick sort
+        </button>
         <button className="btn btn-success btn-sm" onClick={insertionSort}>
           Insertion sort
         </button>
