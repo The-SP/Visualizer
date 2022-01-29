@@ -6,6 +6,7 @@ import bubbleSortAnimation from "../Algorithms/bubbleSort";
 import insertionSortAnimation from "../Algorithms/insertionSort";
 import selectionSortAnimation from "../Algorithms/selectionSort";
 import quickSortAnimation from "../Algorithms/quickSort";
+import mergeSortAnimation from "../Algorithms/mergeSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
@@ -53,6 +54,11 @@ const Sorting = () => {
     handleAnimation(results);
   }
 
+  function mergeSort() {
+    const results = mergeSortAnimation(array);
+    handleAnimation(results);
+  }
+
   function handleAnimation(results) {
     for (let i = 0; i < results.length; i++) {
       setTimeout(() => {
@@ -64,7 +70,7 @@ const Sorting = () => {
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
-        <h2>Sorting Visualizer</h2>
+        <h3>Sorting Visualizer</h3>
         {/* Speed input */}
         <div className="form-control" style={{ maxWidth: 250 }}>
           <label htmlFor="customRange3" className="form-label">
@@ -103,6 +109,9 @@ const Sorting = () => {
           <label htmlFor="floatingInput4">No of Bars</label>
         </div>
 
+        <button className="btn btn-success btn-sm" onClick={mergeSort}>
+          Merge sort
+        </button>
         <button className="btn btn-success btn-sm" onClick={quickSort}>
           Quick sort
         </button>
