@@ -7,12 +7,13 @@ import insertionSortAnimation from "../Algorithms/insertionSort";
 import selectionSortAnimation from "../Algorithms/selectionSort";
 import quickSortAnimation from "../Algorithms/quickSort";
 import mergeSortAnimation from "../Algorithms/mergeSort";
+import shellSortAnimation from "../Algorithms/shellSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
   const [animation_speed, setAnimationSpeed] = useState(15);
-  const [activeAlgorithm, setActiveAlgorithm] = useState(1);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(7);
 
   function resetArray() {
     const arr = [];
@@ -80,7 +81,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "radix");
         break;
       case 7:
-        // results = shellSortAnimation(array);
+        results = shellSortAnimation(array);
         console.log(activeAlgorithm, "shell");
         break;
       case 8:
@@ -92,7 +93,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "default: bubble");
         break;
     }
-    if (activeAlgorithm < 6) handleAnimation(results); // 6, 7, 8 algorithms not implemented yet
+    if (activeAlgorithm < 8) handleAnimation(results); // 6, 8 algorithms not implemented yet
   }
 
   return (

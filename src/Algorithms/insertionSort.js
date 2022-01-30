@@ -7,9 +7,9 @@ function insertionSortAnimation(array) {
     key = { ...rects[i] };
     for (j = i - 1; j >= 0 && rects[j].height > key.height; j--) {
       rects[j] = {...rects[j], isSorting: true}; // this is being compared, so change its color
-      rects[j + 1] = { ...rects[j], isSorting: false}; // SWAP
       results.push(rects.slice());
       rects[j] = {...rects[j], isSorting: false}; // finished comparing, revert color back to default
+      rects[j + 1] = { ...rects[j]}; // SWAP
     }
     rects[j + 1] = { ...key};
   }
