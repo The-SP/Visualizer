@@ -18,7 +18,7 @@ const Sorting = () => {
     const arr = [];
     for (let i = 0; i < noOfBars; i++) {
       arr.push({
-        height: getRandomSize(5, 500),
+        height: getRandomSize(5, 450),
         isSorted: false,
         isSorting: false,
       });
@@ -30,17 +30,17 @@ const Sorting = () => {
   useEffect(resetArray, [noOfBars]);
   //   console.log("array from state", array);
 
-//   function checkSort() {
-//     // use this function to quickly check the final result of sorting algorithm
-//     // array.slice() returns new array
-//     // if we pass just array, it sorts existing array and returns it (i.e no copy is made)
-//     // React doesn't re-render becz the reference to array state doesn't change
-//     //   const sortedArray = bubbleSortAnimation(array.slice());
-//     //   setArray(sortedArray);
-//     const results = bubbleSortAnimation(array);
-//     // handleAnimation(results);
-//     setArray(results);
-//   }
+  //   function checkSort() {
+  //     // use this function to quickly check the final result of sorting algorithm
+  //     // array.slice() returns new array
+  //     // if we pass just array, it sorts existing array and returns it (i.e no copy is made)
+  //     // React doesn't re-render becz the reference to array state doesn't change
+  //     //   const sortedArray = bubbleSortAnimation(array.slice());
+  //     //   setArray(sortedArray);
+  //     const results = bubbleSortAnimation(array);
+  //     // handleAnimation(results);
+  //     setArray(results);
+  //   }
 
   function handleAnimation(results) {
     for (let i = 0; i < results.length; i++) {
@@ -97,8 +97,17 @@ const Sorting = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center">
-        <h3>Sorting Visualizer</h3>
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">Sorting Visualizer</span>
+        </div>
+      </nav>
+
+      <div className="d-flex justify-content-around align-items-center">
+        <button className="btn btn-primary" onClick={resetArray}>
+          Randomize
+        </button>
+
         {/* Speed input */}
         <div className="form-control" style={{ maxWidth: 250 }}>
           <label htmlFor="customRange3" className="form-label">
@@ -160,12 +169,8 @@ const Sorting = () => {
           <label htmlFor="floatingSelect">Sorting Algorithm</label>
         </div>
 
-        <button className="btn btn-success btn-sm" onClick={handleVisualize}>
+        <button className="btn btn-success" onClick={handleVisualize}>
           Visualize
-        </button>
-
-        <button className="btn btn-primary btn-sm" onClick={resetArray}>
-          Generate random bars
         </button>
       </div>
 
