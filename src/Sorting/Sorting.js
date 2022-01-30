@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import "./Sorting.css";
-import { getRandomSize, testSortingAlgorithms } from "../helpers";
+import { getRandomSize } from "../helpers";
 import Bars from "./components/Bars";
 import bubbleSortAnimation from "../Algorithms/bubbleSort";
 import insertionSortAnimation from "../Algorithms/insertionSort";
@@ -11,7 +11,8 @@ import mergeSortAnimation from "../Algorithms/mergeSort";
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
-  const [animation_speed, setAnimationSpeed] = useState(100);
+  const [animation_speed, setAnimationSpeed] = useState(15);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(1);
 
   function resetArray() {
     const arr = [];
@@ -29,35 +30,17 @@ const Sorting = () => {
   useEffect(resetArray, [noOfBars]);
   //   console.log("array from state", array);
 
-  function bubbleSort() {
-    // array.slice() returns new array
-    // if we pass just array, it sorts existing array and returns it (i.e no copy is made)
-    // React doesn't re-render becz the reference to array state doesn't change
-    //   const sortedArray = bubbleSortAnimation(array.slice());
-    //   setArray(sortedArray);
-    const results = bubbleSortAnimation(array);
-    handleAnimation(results);
-  }
-
-  function insertionSort() {
-    const results = insertionSortAnimation(array);
-    handleAnimation(results);
-  }
-
-  function selectionSort() {
-    const results = selectionSortAnimation(array);
-    handleAnimation(results);
-  }
-
-  function quickSort() {
-    const results = quickSortAnimation(array);
-    handleAnimation(results);
-  }
-
-  function mergeSort() {
-    const results = mergeSortAnimation(array);
-    handleAnimation(results);
-  }
+//   function checkSort() {
+//     // use this function to quickly check the final result of sorting algorithm
+//     // array.slice() returns new array
+//     // if we pass just array, it sorts existing array and returns it (i.e no copy is made)
+//     // React doesn't re-render becz the reference to array state doesn't change
+//     //   const sortedArray = bubbleSortAnimation(array.slice());
+//     //   setArray(sortedArray);
+//     const results = bubbleSortAnimation(array);
+//     // handleAnimation(results);
+//     setArray(results);
+//   }
 
   function handleAnimation(results) {
     for (let i = 0; i < results.length; i++) {
@@ -65,6 +48,51 @@ const Sorting = () => {
         setArray(results[i]);
       }, i * animation_speed);
     }
+  }
+
+  function handleVisualize() {
+    let results;
+    switch (
+      +activeAlgorithm // activeAlgorithm is string so, use + to convert to int
+    ) {
+      case 1:
+        results = bubbleSortAnimation(array);
+        console.log(activeAlgorithm, "bubble");
+        break;
+      case 2:
+        results = insertionSortAnimation(array);
+        console.log(activeAlgorithm, "insertion");
+        break;
+      case 3:
+        results = selectionSortAnimation(array);
+        console.log(activeAlgorithm, "selection");
+        break;
+      case 4:
+        results = quickSortAnimation(array);
+        console.log(activeAlgorithm, "quick");
+        break;
+      case 5:
+        results = mergeSortAnimation(array);
+        console.log(activeAlgorithm, "merge");
+        break;
+      case 6:
+        // results = radixSortAnimation(array);
+        console.log(activeAlgorithm, "radix");
+        break;
+      case 7:
+        // results = shellSortAnimation(array);
+        console.log(activeAlgorithm, "shell");
+        break;
+      case 8:
+        // results = heapSortAnimation(array);
+        console.log(activeAlgorithm, "heap");
+        break;
+      default:
+        results = bubbleSortAnimation(array);
+        console.log(activeAlgorithm, "default: bubble");
+        break;
+    }
+    if (activeAlgorithm < 6) handleAnimation(results); // 6, 7, 8 algorithms not implemented yet
   }
 
   return (
@@ -104,26 +132,38 @@ const Sorting = () => {
             className="form-control"
             id="floatingInput4"
             value={noOfBars}
-            onChange={(e) => {setNoOfBars(e.target.value)}}
+            onChange={(e) => {
+              setNoOfBars(e.target.value);
+            }}
           />
           <label htmlFor="floatingInput4">No of Bars</label>
         </div>
 
-        <button className="btn btn-success btn-sm" onClick={mergeSort}>
-          Merge sort
+        {/* Select Algorithm */}
+        <div className="form-floating" style={{ minWidth: 250 }}>
+          <select
+            className="form-select"
+            id="floatingSelect"
+            aria-label="Floating label select example"
+            value={activeAlgorithm}
+            onChange={(e) => setActiveAlgorithm(e.target.value)}
+          >
+            <option value="1">Bubble Sort</option>
+            <option value="2">Insertion Sort</option>
+            <option value="3">Selection Sort</option>
+            <option value="4">Quick Sort</option>
+            <option value="5">Merge Sort</option>
+            <option value="6">Radix Sort</option>
+            <option value="7">Shell Sort</option>
+            <option value="8">Heap Sort</option>
+          </select>
+          <label htmlFor="floatingSelect">Sorting Algorithm</label>
+        </div>
+
+        <button className="btn btn-success btn-sm" onClick={handleVisualize}>
+          Visualize
         </button>
-        <button className="btn btn-success btn-sm" onClick={quickSort}>
-          Quick sort
-        </button>
-        <button className="btn btn-success btn-sm" onClick={insertionSort}>
-          Insertion sort
-        </button>
-        <button className="btn btn-success btn-sm" onClick={selectionSort}>
-          Selection sort
-        </button>
-        <button className="btn btn-success btn-sm" onClick={bubbleSort}>
-          Bubble sort
-        </button>
+
         <button className="btn btn-primary btn-sm" onClick={resetArray}>
           Generate random bars
         </button>
