@@ -13,7 +13,7 @@ function selectionSortAnimation(array) {
       rects[j] = { ...rects[j], isSorting: false }; // revert color to default
       rects[max] = { ...rects[max], isSorting: false };
     }
-    if (max != i) {
+    if (max !== i) {
       [rects[i], rects[max]] = [rects[max], rects[i]]; // swap
     }
     rects[i] = { ...rects[i], isSorted: true }; // i th bar is sorted after inner loop

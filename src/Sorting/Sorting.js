@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import "./Sorting.css";
 import { getRandomSize } from "../helpers";
 import Bars from "./components/Bars";
