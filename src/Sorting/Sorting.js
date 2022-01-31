@@ -8,12 +8,13 @@ import selectionSortAnimation from "../Algorithms/selectionSort";
 import quickSortAnimation from "../Algorithms/quickSort";
 import mergeSortAnimation from "../Algorithms/mergeSort";
 import shellSortAnimation from "../Algorithms/shellSort";
+import radixSortAnimation from "../Algorithms/radixSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
   const [animation_speed, setAnimationSpeed] = useState(15);
-  const [activeAlgorithm, setActiveAlgorithm] = useState(7);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(6);
 
   function resetArray() {
     const arr = [];
@@ -30,18 +31,6 @@ const Sorting = () => {
 
   useEffect(resetArray, [noOfBars]);
   //   console.log("array from state", array);
-
-  //   function checkSort() {
-  //     // use this function to quickly check the final result of sorting algorithm
-  //     // array.slice() returns new array
-  //     // if we pass just array, it sorts existing array and returns it (i.e no copy is made)
-  //     // React doesn't re-render becz the reference to array state doesn't change
-  //     //   const sortedArray = bubbleSortAnimation(array.slice());
-  //     //   setArray(sortedArray);
-  //     const results = bubbleSortAnimation(array);
-  //     // handleAnimation(results);
-  //     setArray(results);
-  //   }
 
   function handleAnimation(results) {
     for (let i = 0; i < results.length; i++) {
@@ -77,7 +66,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "merge");
         break;
       case 6:
-        // results = radixSortAnimation(array);
+        results = radixSortAnimation(array);
         console.log(activeAlgorithm, "radix");
         break;
       case 7:
@@ -93,7 +82,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "default: bubble");
         break;
     }
-    if (activeAlgorithm < 8) handleAnimation(results); // 6, 8 algorithms not implemented yet
+    if (activeAlgorithm < 8) handleAnimation(results); // 8th (heap sort) algorithm not implemented yet
   }
 
   return (
