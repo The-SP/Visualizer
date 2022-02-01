@@ -3,15 +3,22 @@ function insertionSortAnimation(array) {
   let results = []; // to store array at each iteration
   let rects = array.slice(); // create copy
   let key, j;
+
+  function saveAnimation(index) {
+    rects[index] = { ...rects[index], isSorting: true };
+    results.push(rects.slice()); // store animation
+    rects[index] = { ...rects[index], isSorting: false };
+  }
+  
   for (let i = 1; i < n; i++) {
     key = { ...rects[i] };
     for (j = i - 1; j >= 0 && rects[j].height > key.height; j--) {
-      rects[j] = {...rects[j], isSorting: true}; // this is being compared, so change its color
-      results.push(rects.slice());
-      rects[j] = {...rects[j], isSorting: false}; // finished comparing, revert color back to default
+      saveAnimation(j);
       rects[j + 1] = { ...rects[j]}; // SWAP
     }
-    rects[j + 1] = { ...key};
+    rects[j + 1] = { ...key, isSorted: true};
+    results.push(rects.slice()); // key(original a[i]) is put into its correct positon of sorted array so show it as green once
+    rects[j+1] = {...rects[j+1], isSorted: false};
   }
   // After sorting is complete
   // for all bars from index 0 to last, make color green one at a time to show sorted complete animation

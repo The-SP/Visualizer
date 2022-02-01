@@ -16,11 +16,10 @@ function radixSortAnimation(array) {
     return max;
   }
 
-//   function getNoOfDigits(max) {
-//       let digits = 1;
-//       while (Math.floor(max / pos) > 0) digits++;
-//       return digits;
-//   }
+  function getNoOfDigits(max) {
+      if (max === 0) return 1;
+      return Math.floor(Math.log10(Math.abs(max))) + 1;
+  }
 
   function countSort(pos) {
     let output = new Array(n);
@@ -55,7 +54,7 @@ function radixSortAnimation(array) {
 
   // Radix Sort
   const maxHeight = getMax();
-  const digits = 3; // get no of pass for final sorted animation
+  const digits = getNoOfDigits(maxHeight); // get no of pass for final sorted animation
   let pass = 1;
   for (let pos = 1; Math.floor(maxHeight / pos) > 0; pos *= 10) countSort(pos);
   results.push(rects.slice()); // push final result

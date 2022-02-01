@@ -3,13 +3,18 @@ function shellSortAnimation(array) {
   let results = []; // to store array at each iteration
   let rects = array.slice(); // create copy
   let i, j, gap, temp;
+
+  function saveAnimation(index) {
+    rects[index] = { ...rects[index], isSorting: true };
+    results.push(rects.slice()); // store animation
+    rects[index] = { ...rects[index], isSorting: false };
+  }
+  
   for (gap = Math.floor(n / 2); gap >= 1; gap=Math.floor(gap/2)) {
     for (i = gap; i < n; i++) {
       temp = { ...rects[i] };
       for (j = i; j >= gap && rects[j - gap].height > temp.height; j -= gap) {
-        rects[j-gap] = {...rects[j-gap], isSorting: true};
-        results.push(rects.slice());
-        rects[j-gap] = {...rects[j-gap], isSorting: false};
+        saveAnimation(j-gap);
         rects[j] = { ...rects[j - gap] }; // shift gap-sorted element
       }
       rects[j] = { ...temp, isSorted: true };
