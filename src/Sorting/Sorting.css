@@ -19,3 +19,27 @@
     font-size: 0.5rem;
     color: white;
 }
+
+/* For dark and light theme */
+:root {
+    --background: white;
+    --text-primary: black;
+}
+
+[data-theme='dark'] {
+    --background: #222;
+    --text-primary: white;
+}
+
+.theme {
+  background-color: var(--background);
+  height: 100vh;
+}
+
+.theme-icon {
+    cursor: pointer;
+}
+
+.theme-icon :hover {
+    color: orangered;
+}

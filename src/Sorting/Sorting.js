@@ -16,6 +16,13 @@ const Sorting = () => {
   const [animation_speed, setAnimationSpeed] = useState(15);
   const [activeAlgorithm, setActiveAlgorithm] = useState(6);
 
+  // Toggle theme
+  const [theme, setTheme] = useState("light");
+  function switchTheme() {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  }
+
   function resetArray() {
     const arr = [];
     for (let i = 0; i < noOfBars; i++) {
@@ -86,10 +93,18 @@ const Sorting = () => {
   }
 
   return (
-    <>
+    <div class="theme" data-theme={theme}>
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <span className="navbar-brand mb-0 h1">Sorting Visualizer</span>
+          {/* Toggle theme */}
+          <span className="theme-icon text-warning h4 mb-0" onClick={switchTheme}>
+            {theme === "light" ? (
+              <i className="bi bi-moon-stars"></i>
+            ) : (
+              <i className="bi bi-brightness-high"></i>
+            )}
+          </span>
         </div>
       </nav>
 
@@ -167,7 +182,7 @@ const Sorting = () => {
       <div className="sorting">
         <Bars array={array} />
       </div>
-    </>
+    </div>
   );
 };
 
