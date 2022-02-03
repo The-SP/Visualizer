@@ -13,8 +13,8 @@ import radixSortAnimation from "../Algorithms/radixSort";
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
-  const [animation_speed, setAnimationSpeed] = useState(15);
-  const [activeAlgorithm, setActiveAlgorithm] = useState(6);
+  const [animation_speed, setAnimationSpeed] = useState(50);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(5);
 
   // Toggle theme
   const [theme, setTheme] = useState("light");
@@ -23,13 +23,24 @@ const Sorting = () => {
     setTheme(newTheme);
   }
 
+  const BACKGROUND_SHADES = [
+    ["#006699", "#0066CC", "#0066FF"], // light blue
+    ["#660099", "#6600BB", "#6600DD"], // pinkish purple
+    ["#990099", "#9900CC", "#9900FF"], // dark pink
+    ["#CC9900", "#CC9933", "#CC9966"], // orange, yellow
+    ["#40E0D0", "#48D1CC", "#00CED1"], // cyan
+    ["#9ACD32", "#6B8E23", "#556B2F"], // green
+  ];
+
   function resetArray() {
     const arr = [];
+    const shades = getRandomSize(0, BACKGROUND_SHADES.length-1);
     for (let i = 0; i < noOfBars; i++) {
       arr.push({
         height: getRandomSize(5, 450),
         isSorted: false,
         isSorting: false,
+        color: BACKGROUND_SHADES[shades][i%3],
       });
     }
     setArray(arr);
@@ -93,12 +104,15 @@ const Sorting = () => {
   }
 
   return (
-    <div class="theme" data-theme={theme}>
+    <div className="theme" data-theme={theme}>
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <span className="navbar-brand mb-0 h1">Sorting Visualizer</span>
           {/* Toggle theme */}
-          <span className="theme-icon text-warning h4 mb-0" onClick={switchTheme}>
+          <span
+            className="theme-icon text-warning h4 mb-0"
+            onClick={switchTheme}
+          >
             {theme === "light" ? (
               <i className="bi bi-moon-stars"></i>
             ) : (

@@ -6,7 +6,7 @@ const Bars = ({ array }) => {
   function getColor(bar) {
     if (bar.isSorted) return "green";
     else if (bar.isSorting) return "red";
-    else return "pink";
+    else return bar.color;
   }
 
   return (
