@@ -24,11 +24,13 @@
 :root {
     --background: white;
     --text-primary: black;
+    --input-background: #eee;
 }
 
 [data-theme='dark'] {
     --background: #222;
     --text-primary: white;
+    --input-background: #2a2a2a;
 }
 
 .theme {
@@ -42,4 +44,8 @@
 
 .theme-icon :hover {
     color: orangered;
+}
+
+.input-bar {
+    background: var(--input-background);
 }

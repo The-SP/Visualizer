@@ -122,7 +122,7 @@ const Sorting = () => {
         </div>
       </nav>
 
-      <div className="d-flex justify-content-around align-items-center">
+      <div className="d-flex justify-content-around align-items-center input-bar">
         <button className="btn btn-primary" onClick={resetArray}>
           Randomize
         </button>
@@ -130,7 +130,7 @@ const Sorting = () => {
         {/* Speed input */}
         <div className="form-control" style={{ maxWidth: 250 }}>
           <label htmlFor="customRange3" className="form-label">
-            <span className="text-primary">Animation Speed(ms): </span>
+            <span className="text-primary">Animation Delay(ms): </span>
             <span className="font-weight-bold text-success">
               {" "}
               {animation_speed}
