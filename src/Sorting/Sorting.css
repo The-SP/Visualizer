@@ -1,16 +1,14 @@
 .sorting {
     display: flex;
     align-items: center;
-    height: 70vh;
+    height: 75vh;
     width: 100vw;
     margin-top: 1rem;
 }
 
 .array-container {
-    /* display: flex;
-    align-items: flex-end; */
     max-width: 1000px;
-    /* margin: auto; */
+    height: 100%;
 }
 
 .array-bar {

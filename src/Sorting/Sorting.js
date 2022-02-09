@@ -24,12 +24,14 @@ const Sorting = () => {
   }
 
   const BACKGROUND_SHADES = [
-    ["#006699", "#0066CC", "#0066FF"], // light blue
+    ["#ff99cc", "#ff88bb", "#ff77aa"], // light pink
+    ["#fec8c1", "#feb2a8", "#fe9c8f"], // pastella
+    ["#54b2a9", "#35a79c", "#009688"], // android lollipop
+    ["#8dbdff", "#64a1f4", "#4a91f2"], // armor falls
     ["#660099", "#6600BB", "#6600DD"], // pinkish purple
-    ["#990099", "#9900CC", "#9900FF"], // dark pink
+    ["#006699", "#0066CC", "#0066FF"], // light blue
     ["#CC9900", "#CC9933", "#CC9966"], // orange, yellow
     ["#40E0D0", "#48D1CC", "#00CED1"], // cyan
-    ["#9ACD32", "#6B8E23", "#556B2F"], // green
   ];
 
   function resetArray() {

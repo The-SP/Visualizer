@@ -13,7 +13,7 @@ const Bars = ({ array }) => {
     <div className="array-container d-flex justify-content-between align-items-end m-auto">
       {array.map((bar, index) => (
         <div
-          className="array-bar"
+          className="array-bar text-center"
           key={index}
           style={{
             height: bar.height,
