@@ -4,6 +4,12 @@ function getRandomSize(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function toggleDisabled(disabledValue) {
+  let btnsAndInputs = document.querySelectorAll(".toggle-disabled");    // get all btns and input fields in input bar
+  for (let i = 0; i < btnsAndInputs.length; i++)
+    btnsAndInputs[i].disabled = disabledValue;
+}
+
 function arraysAreEqual(arrayOne, arrayTwo) {
   if (arrayOne.length !== arrayTwo.length) return false;
   for (let i = 0; i < arrayOne.length; i++)
@@ -14,7 +20,7 @@ function arraysAreEqual(arrayOne, arrayTwo) {
 function testSortingAlgorithms() {
   for (let i = 0; i < 1000; i++) {
     const array = [];
-    const length = getRandomSize(1, 1000)
+    const length = getRandomSize(1, 1000);
     for (let j = 0; j < length; j++) {
       array.push(getRandomSize(-1000, 1000));
     }
@@ -24,4 +30,4 @@ function testSortingAlgorithms() {
   }
 }
 
-export { getRandomSize, arraysAreEqual, testSortingAlgorithms };
+export { getRandomSize, toggleDisabled, arraysAreEqual, testSortingAlgorithms };

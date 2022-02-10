@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Sorting.css";
-import { getRandomSize } from "../helpers";
+import { getRandomSize, toggleDisabled } from "../helpers";
 import Bars from "./components/Bars";
 import bubbleSortAnimation from "../Algorithms/bubbleSort";
 import insertionSortAnimation from "../Algorithms/insertionSort";
@@ -53,11 +53,14 @@ const Sorting = () => {
   //   console.log("array from state", array);
 
   function handleAnimation(results) {
+    toggleDisabled(true); // disable all btns and input fields while animation is running
     for (let i = 0; i < results.length; i++) {
       setTimeout(() => {
         setArray(results[i]);
       }, i * animation_speed);
     }
+    // enable all btns and input fields after animation is over
+    setTimeout(() => {toggleDisabled(false)}, results.length*animation_speed)
   }
 
   function handleVisualize() {
@@ -125,7 +128,7 @@ const Sorting = () => {
       </nav>
 
       <div className="d-flex justify-content-around align-items-center input-bar">
-        <button className="btn btn-primary" onClick={resetArray}>
+        <button className="btn btn-primary toggle-disabled" onClick={resetArray}>
           Randomize
         </button>
 
@@ -142,7 +145,7 @@ const Sorting = () => {
             <span>1</span>
             <input
               type="range"
-              className="form-range mx-2"
+              className="form-range mx-2 toggle-disabled"
               min="1"
               max="1000"
               step="1"
@@ -159,7 +162,7 @@ const Sorting = () => {
           <input
             type="number"
             step="5"
-            className="form-control"
+            className="form-control toggle-disabled"
             id="floatingInput4"
             value={noOfBars}
             onChange={(e) => {
@@ -172,7 +175,7 @@ const Sorting = () => {
         {/* Select Algorithm */}
         <div className="form-floating" style={{ minWidth: 250 }}>
           <select
-            className="form-select"
+            className="form-select toggle-disabled"
             id="floatingSelect"
             aria-label="Floating label select example"
             value={activeAlgorithm}
@@ -190,7 +193,7 @@ const Sorting = () => {
           <label htmlFor="floatingSelect">Sorting Algorithm</label>
         </div>
 
-        <button className="btn btn-success" onClick={handleVisualize}>
+        <button className="btn btn-success toggle-disabled" onClick={handleVisualize}>
           Visualize
         </button>
       </div>
