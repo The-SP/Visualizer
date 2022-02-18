@@ -4,9 +4,12 @@ function heapSortAnimation(array) {
   let rects = array.slice(); // create fresh copy
 
   function saveAnimation(index1, index2) {
+    // check if the index are valid, if they are out of bounds then using them can increase size of array
+    if (index1 >= n || index2 >= n) return;
+    // Save animation
     rects[index1] = { ...rects[index1], isSorting: true };
     rects[index2] = { ...rects[index2], isSorting: true };
-    results.push(rects.slice()); // store animation
+    results.push(rects.slice());
     rects[index1] = { ...rects[index1], isSorting: false };
     rects[index2] = { ...rects[index2], isSorting: false };
   }
@@ -26,7 +29,7 @@ function heapSortAnimation(array) {
     if (r < n && rects[r].height > rects[largest].height) largest = r;
 
     // If largest is not root
-    if (largest != i) {
+    if (largest !== i) {
       // swap
       saveAnimation(i, largest);
       [rects[i], rects[largest]] = [rects[largest], rects[i]];
@@ -38,22 +41,22 @@ function heapSortAnimation(array) {
   }
 
   // main heap sort function
-  {
-    // Build heap (rearrange array)
-    for (let i = Math.floor(n / 2 - 1); i >= 0; i--) heapify(n, i);
 
-    // Extract an element one by one from heap
-    for (let i = n - 1; i > 0; i--) {
-      // Swap current root and end element
-      saveAnimation(0, i);
-      [rects[0], rects[i]] = [rects[i], { ...rects[0], isSorted: true }];
-      saveAnimation(0, i);
+  // Build heap (rearrange array)
+  for (let i = Math.floor(n / 2 - 1); i >= 0; i--) heapify(n, i);
 
-      // call max heapify on the reduced array
-      heapify(i, 0);
-    }
-    rects[0] = { ...rects[0], isSorted: true };
+  // Extract an element one by one from heap
+  for (let i = n - 1; i > 0; i--) {
+    // Swap current root and end element
+    saveAnimation(0, i);
+    [rects[0], rects[i]] = [rects[i], rects[0]];
+    rects[i] = { ...rects[i], isSorted: true };
+    saveAnimation(0, i);
+
+    // call max heapify on the reduced array
+    heapify(i, 0);
   }
+  rects[0] = { ...rects[0], isSorted: true };
 
   results.push(rects.slice());
   return results;

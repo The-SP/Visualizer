@@ -1,7 +1,9 @@
 const Bars = ({ array }) => {
-  let marginValue = 2;
-  if (array.length > 50) marginValue = 1;
-  else if (array.length < 15) marginValue = 10;
+  let marginValue;
+  if (array.length < 15) marginValue = 10;
+  else if (array.length < 25) marginValue = 5;
+  else if (array.length < 50) marginValue = 2;
+  else marginValue = 1;
 
   function getColor(bar) {
     if (bar.isSorted) return "green";
@@ -17,7 +19,7 @@ const Bars = ({ array }) => {
           key={index}
           style={{
             height: bar.height,
-            margin: marginValue,
+            marginLeft: marginValue,
             backgroundColor: getColor(bar),
           }}
         >

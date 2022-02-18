@@ -13,8 +13,8 @@ import heapSortAnimation from "../Algorithms/heapSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
-  const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
-  const [animation_speed, setAnimationSpeed] = useState(50);
+  const [noOfBars, setNoOfBars] = useState(20); // 900 is limit otherwise nothing appears
+  const [animation_speed, setAnimationSpeed] = useState(1);
   const [activeAlgorithm, setActiveAlgorithm] = useState(8);
 
   // Toggle theme
@@ -69,35 +69,27 @@ const Sorting = () => {
     ) {
       case 1:
         results = bubbleSortAnimation(array);
-        console.log(activeAlgorithm, "bubble");
         break;
       case 2:
         results = insertionSortAnimation(array);
-        console.log(activeAlgorithm, "insertion");
         break;
       case 3:
         results = selectionSortAnimation(array);
-        console.log(activeAlgorithm, "selection");
         break;
       case 4:
         results = quickSortAnimation(array);
-        console.log(activeAlgorithm, "quick");
         break;
       case 5:
         results = mergeSortAnimation(array);
-        console.log(activeAlgorithm, "merge");
         break;
       case 6:
         results = radixSortAnimation(array);
-        console.log(activeAlgorithm, "radix");
         break;
       case 7:
         results = shellSortAnimation(array);
-        console.log(activeAlgorithm, "shell");
         break;
       case 8:
         results = heapSortAnimation(array);
-        console.log(activeAlgorithm, "heap");
         break;
       default:
         results = bubbleSortAnimation(array);
