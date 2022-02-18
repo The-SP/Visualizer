@@ -9,12 +9,13 @@ import quickSortAnimation from "../Algorithms/quickSort";
 import mergeSortAnimation from "../Algorithms/mergeSort";
 import shellSortAnimation from "../Algorithms/shellSort";
 import radixSortAnimation from "../Algorithms/radixSort";
+import heapSortAnimation from "../Algorithms/heapSort";
 
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 450 is limit otherwise nothing appears
   const [animation_speed, setAnimationSpeed] = useState(50);
-  const [activeAlgorithm, setActiveAlgorithm] = useState(5);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(8);
 
   // Toggle theme
   const [theme, setTheme] = useState("light");
@@ -46,11 +47,9 @@ const Sorting = () => {
       });
     }
     setArray(arr);
-    // console.log("arr from func and state", arr, array);
   }
 
   useEffect(resetArray, [noOfBars]);
-  //   console.log("array from state", array);
 
   function handleAnimation(results) {
     toggleDisabled(true); // disable all btns and input fields while animation is running
@@ -97,7 +96,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "shell");
         break;
       case 8:
-        // results = heapSortAnimation(array);
+        results = heapSortAnimation(array);
         console.log(activeAlgorithm, "heap");
         break;
       default:
@@ -105,7 +104,7 @@ const Sorting = () => {
         console.log(activeAlgorithm, "default: bubble");
         break;
     }
-    if (activeAlgorithm < 8) handleAnimation(results); // 8th (heap sort) algorithm not implemented yet
+    handleAnimation(results);
   }
 
   return (
