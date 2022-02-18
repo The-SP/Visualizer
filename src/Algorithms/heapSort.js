@@ -18,15 +18,19 @@ function heapSortAnimation(array) {
     let r = 2 * i + 2; // right node
 
     // If left child is larger than largest so far
+    saveAnimation(l, largest);
     if (l < n && rects[l].height > rects[largest].height) largest = l;
 
     // If right child is larger than largest so far
+    saveAnimation(r, largest);
     if (r < n && rects[r].height > rects[largest].height) largest = r;
 
     // If largest is not root
     if (largest != i) {
       // swap
+      saveAnimation(i, largest);
       [rects[i], rects[largest]] = [rects[largest], rects[i]];
+      saveAnimation(i, largest);
 
       // Recursively heapify the affected sub-tree
       heapify(n, largest);
@@ -41,11 +45,14 @@ function heapSortAnimation(array) {
     // Extract an element one by one from heap
     for (let i = n - 1; i > 0; i--) {
       // Swap current root and end element
-      [rects[0], rects[i]] = [rects[i], rects[0]];
+      saveAnimation(0, i);
+      [rects[0], rects[i]] = [rects[i], { ...rects[0], isSorted: true }];
+      saveAnimation(0, i);
 
       // call max heapify on the reduced array
       heapify(i, 0);
     }
+    rects[0] = { ...rects[0], isSorted: true };
   }
 
   results.push(rects.slice());
