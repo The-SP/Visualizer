@@ -43,7 +43,7 @@ export default function quickSortAnimation(array) {
     } else {
       // if the partition is complete this condition runs
       // make all bars of this partition isSorted: true to change color to green
-      for (let i = ub; i <= lb; i++) {
+      for (let i = ub; i <= lb && i<n; i++) {
         rects[i] = { ...rects[i], isSorted: true };
         results.push(rects.slice());
       }

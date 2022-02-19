@@ -4,6 +4,7 @@ export default function mergeSortAnimation(array) {
   let rects = array.slice(); // create fresh copy
 
   function saveAnimation(index1, index2) {
+    if (index1 >= n || index2 >= n) return;
     rects[index1] = { ...rects[index1], isSorting: true };
     rects[index2] = { ...rects[index2], isSorting: true };
     results.push(rects.slice()); // store animation
