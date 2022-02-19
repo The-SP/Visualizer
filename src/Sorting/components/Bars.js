@@ -1,7 +1,7 @@
 const Bars = ({ array }) => {
   let marginValue;
   if (array.length < 15) marginValue = 10;
-  else if (array.length < 25) marginValue = 5;
+  else if (array.length < 30) marginValue = 5;
   else if (array.length < 50) marginValue = 2;
   else marginValue = 1;
 
