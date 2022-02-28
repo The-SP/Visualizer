@@ -1,7 +1,7 @@
 # Sorting Visualizer
 
-Data Structure and Algorithm Project, 4th Semester  
-Visualization of different sorting algorithms using React
+Visualization of different sorting algorithms using React     
+Data Structure and Algorithm Project for B.E.(Computer) 4th Semester.
 
 ## Live demo: https://sortvisualizzer.netlify.app/
 

@@ -14,8 +14,8 @@ import heapSortAnimation from "../Algorithms/heapSort";
 const Sorting = () => {
   const [array, setArray] = useState([]);
   const [noOfBars, setNoOfBars] = useState(20); // 900 is limit otherwise nothing appears
-  const [animation_speed, setAnimationSpeed] = useState(1);
-  const [activeAlgorithm, setActiveAlgorithm] = useState(8);
+  const [animation_speed, setAnimationSpeed] = useState(75);
+  const [activeAlgorithm, setActiveAlgorithm] = useState(5);
 
   // Toggle theme
   const [theme, setTheme] = useState("light");
